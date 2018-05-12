@@ -21,7 +21,7 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
+$spacer: 8px;
 
 
 // Named Color Variables
@@ -41,7 +41,14 @@ $colors: (
 );
 
 $white: #fff;
+$silver: #C4C4C4;
+$dusty-gray: #999999;
+$tundora: #454545;
+
 $alabaster: #F7F7F7;
+
+
+$primary: #FFAF69;
 $primaryDark: #FFA352;
 
 

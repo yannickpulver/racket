@@ -1,0 +1,65 @@
+page-login {
+}
+
+.login-page {
+  background: #ffffff url(../../assets/imgs/bg_login.jpg) no-repeat center;
+  background-size: cover;
+}
+
+.logo-container{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 55px;
+}
+
+.logo-container__title{
+  color: $dusty-gray;
+  padding: $spacer 0 0 0;
+  margin: 0;
+}
+
+.logo-container__subtitle{
+  color: $silver;
+  margin:0;
+
+}
+
+.login-container{
+  text-align: center;
+  margin-top: 53%;
+}
+
+.login-container__img{
+ margin: 0 -25px 0 -100px;
+}
+
+
+.login-container__input{
+  background: $white;
+  color: $primaryDark;
+  height: 48px;
+  margin: $spacer 0 0 0;
+  border-radius: 3px;
+}
+
+.login-container__submit{
+  color: $white;
+  background: rgba(13, 13, 13, 0.86);
+  border-radius: 3px;
+  overflow: hidden;
+  text-align: center;
+  height: 48px;
+  margin: $spacer 0 0 0;
+  line-height: 19px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.item-select .select {
+  max-width: 89%!important;
+  width: 89%!important;
+  right: auto!important;
+  direction: ltr!important;
+  padding-left: 0!important;
+}

@@ -11,9 +11,9 @@
   <ion-list>
     <ion-item-sliding class="card" *ngFor="let item of matches | async">
         <button ion-item detail-push no-lines (click)="navigateToMatch(item)">
-            <p class="card__text">09.04.2018 – 18:00</p>
+            <p class="card__text">{{item.date}}</p>
             <h2 class="card__title"><span class="primary-text">{{item.team1}}</span> vs {{item.team2}}</h2>
-            <p class="card__text">Runde 1</p>
+            <p class="card__text">Round {{item.round}}</p>
         </button>
       <ion-item-options slide="right">
         <button ion-button color="primary" (click)="editItem(item)" icon-only>
@@ -30,9 +30,9 @@
   <ion-list>
       <ion-item-sliding class="card" *ngFor="let item of matches | async">
           <ion-item detail-push no-lines>
-              <p class="card__text">09.04.2018 – 18:00</p>
+              <p class="card__text">{{item.date}}</p>
               <h2 class="card__title"><span class="primary-text">Baden</span> vs Rothenburg</h2>
-              <p class="card__text">Runde 1</p>
+              <p class="card__text">Round {{item.round}}</p>
           </ion-item>
         <ion-item-options slide="right">
           <button ion-button color="primary" (click)="editItem(item)" icon-only>

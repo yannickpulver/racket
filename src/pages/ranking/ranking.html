@@ -14,5 +14,26 @@
 
 
 <ion-content padding>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi aspernatur assumenda consectetur, consequatur dolorem eius esse fugiat, incidunt inventore magni nam nemo nihil odio quos tenetur, voluptas voluptatibus voluptatum.
+  <ion-list>
+      <ion-item no-padding detail-push no-lines *ngFor="let item of matches | async" class="card score" no-margin >
+        <ion-label no-margin>
+          <ion-grid no-padding>
+            <ion-row align-items-center>
+              <ion-col class="card__number">
+                1
+              </ion-col>
+              <ion-col class="card__name">
+                {{item.team1}}
+              </ion-col>
+              <ion-col class="points">
+                35
+              </ion-col>
+              <ion-col class="sets">
+                20:1
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-label>
+      </ion-item>
+  </ion-list>
 </ion-content>

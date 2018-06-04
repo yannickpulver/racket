@@ -6,36 +6,35 @@ page-login {
   background-size: cover;
 }
 
-.logo-container{
+.logo-container {
   width: 100%;
   height: auto;
   text-align: center;
   margin-top: 55px;
 }
 
-.logo-container__title{
+.logo-container__title {
   color: $dusty-gray;
   padding: $spacer 0 0 0;
   margin: 0;
 }
 
-.logo-container__subtitle{
+.logo-container__subtitle {
   color: $silver;
-  margin:0;
+  margin: 0;
 
 }
 
-.login-container{
+.login-container {
   text-align: center;
-  margin-top: 53%;
+  margin-top: 60%;
 }
 
-.login-container__img{
- margin: 0 -25px 0 -100px;
+.login-container__img {
+  margin: 0 -25px 0 -100px;
 }
 
-
-.login-container__input{
+.login-container__input {
   background: $white;
   color: $primaryDark;
   height: 48px;
@@ -43,7 +42,7 @@ page-login {
   border-radius: 3px;
 }
 
-.login-container__submit{
+.login-container__submit {
   color: $white;
   background: rgba(13, 13, 13, 0.86);
   border-radius: 3px;
@@ -57,9 +56,9 @@ page-login {
 }
 
 .item-select .select {
-  max-width: 89%!important;
-  width: 89%!important;
-  right: auto!important;
-  direction: ltr!important;
-  padding-left: 0!important;
+  max-width: 89% !important;
+  width: 89% !important;
+  right: auto !important;
+  direction: ltr !important;
+  padding-left: 0 !important;
 }

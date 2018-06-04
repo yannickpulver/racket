@@ -17,6 +17,10 @@ import {RankingPage} from "../pages/ranking/ranking";
 import {TeamPage} from "../pages/team/team";
 import {LoginPage} from "../pages/login/login";
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+import {PastMatchesPage} from "../pages/past-matches/past-matches";
+import {UpcomingMatchesPage} from "../pages/upcoming-matches/upcoming-matches";
+import { SingletonProvider } from '../providers/singleton/singleton';
+import {AddTeamMemberPage} from "../pages/add-team-member/add-team-member";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4r535VHKNdUs6Kd-gdD4sWnJ8qskTq04",
@@ -35,14 +39,17 @@ const firebaseConfig = {
     RankingPage,
     TeamPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    PastMatchesPage,
+    UpcomingMatchesPage,
+    AddTeamMemberPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,13 +59,17 @@ const firebaseConfig = {
     RankingPage,
     TeamPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    PastMatchesPage,
+    UpcomingMatchesPage,
+    AddTeamMemberPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseServiceProvider
+    FirebaseServiceProvider,
+    SingletonProvider
   ]
 })
 export class AppModule {}

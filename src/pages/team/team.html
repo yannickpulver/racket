@@ -7,13 +7,32 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Team</ion-title>
+    <ion-title>{{teamName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi aspernatur assumenda consectetur, consequatur dolorem eius esse fugiat, incidunt inventore magni nam nemo nihil odio quos tenetur, voluptas voluptatibus voluptatum.
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of teamMembers | async">
+      <ion-item detail-push>
+        <h1>{{item.name}} — {{item.classification}}</h1>
+      </ion-item>
+      <ion-item-options slide="right">
+        <button ion-button color="primary" (click)="editItem(item)" icon-only>
+          <ion-icon name="cog"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeItem(item)" icon-only>
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
+  <ion-fab bottom right>
+    <button ion-fab (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

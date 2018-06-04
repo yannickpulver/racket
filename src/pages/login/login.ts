@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import {Observable} from "rxjs/Observable";
 
 
 /**
@@ -16,6 +17,8 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+
+  teams: Observable<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

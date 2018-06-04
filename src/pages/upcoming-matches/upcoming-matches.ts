@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {Observable} from "rxjs/Observable";
+import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 
 /**
  * Generated class for the UpcomingMatchesPage page.
@@ -14,7 +16,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class UpcomingMatchesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  matches: Observable<any>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider) {
+    this.matches = this.firebaseService.getMatches();
   }
 
   ionViewDidLoad() {

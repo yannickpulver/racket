@@ -10,17 +10,17 @@ import {Observable} from "rxjs/Observable";
 */
 @Injectable()
 export class FirebaseServiceProvider {
-  // itemsRef: AngularFireList<any>;
-  // items: Observable<any>;
+  matchesRef: AngularFireList<any>;
+  matches: Observable<any>;
 
   teamMembersRef: AngularFireList<any>;
   teamMembers: Observable<any>;
 
   constructor(public afd: AngularFireDatabase) {
-    // this.itemsRef = this.afd.list('/teams');
-    // this.items = this.itemsRef.snapshotChanges().map(changes =>{
-    //   return changes.map(c => ({ key: c.payload.key, ...c.payload.val()}));
-    // });
+    this.matchesRef = this.afd.list('/matches');
+    this.matches = this.matchesRef.snapshotChanges().map(changes => {
+      return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+    });
 
     this.teamMembersRef = this.afd.list('/teammember');
     this.teamMembers = this.teamMembersRef.snapshotChanges().map(changes => {
@@ -44,10 +44,11 @@ export class FirebaseServiceProvider {
     return this.teamMembersRef.remove(key);
   }
 
-  // //Todo: Define what how the Data is structured
-  // addItems(newTeam){
-  //   return this.itemsRef.push(newTeam)
-  // }
+  getMatches() {
+    return this.matches;
+  }
 
-
+  addMatch(match) {
+    return this.matchesRef.push(match);
+  }
 }

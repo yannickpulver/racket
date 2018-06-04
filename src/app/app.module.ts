@@ -21,6 +21,8 @@ import {PastMatchesPage} from "../pages/past-matches/past-matches";
 import {UpcomingMatchesPage} from "../pages/upcoming-matches/upcoming-matches";
 import { SingletonProvider } from '../providers/singleton/singleton';
 import {AddTeamMemberPage} from "../pages/add-team-member/add-team-member";
+import {AddMatchPage} from "../pages/add-match/add-match";
+import {DatePicker} from "@ionic-native/date-picker";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4r535VHKNdUs6Kd-gdD4sWnJ8qskTq04",
@@ -42,7 +44,8 @@ const firebaseConfig = {
     LoginPage,
     PastMatchesPage,
     UpcomingMatchesPage,
-    AddTeamMemberPage
+    AddTeamMemberPage,
+    AddMatchPage
   ],
   imports: [
     BrowserModule,
@@ -62,14 +65,16 @@ const firebaseConfig = {
     LoginPage,
     PastMatchesPage,
     UpcomingMatchesPage,
-    AddTeamMemberPage
+    AddTeamMemberPage,
+    AddMatchPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
-    SingletonProvider
+    SingletonProvider,
+    DatePicker
   ]
 })
 export class AppModule {}

@@ -23,6 +23,9 @@ import { SingletonProvider } from '../providers/singleton/singleton';
 import {AddTeamMemberPage} from "../pages/add-team-member/add-team-member";
 import {AddMatchPage} from "../pages/add-match/add-match";
 import {DatePicker} from "@ionic-native/date-picker";
+import {MatchDetailPage} from "../pages/match-detail/match-detail";
+import {MatchDetailScorePage} from "../pages/match-detail-score/match-detail-score";
+import {MatchDetailFormationPage} from "../pages/match-detail-formation/match-detail-formation";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4r535VHKNdUs6Kd-gdD4sWnJ8qskTq04",
@@ -45,7 +48,10 @@ const firebaseConfig = {
     PastMatchesPage,
     UpcomingMatchesPage,
     AddTeamMemberPage,
-    AddMatchPage
+    AddMatchPage,
+    MatchDetailPage,
+    MatchDetailScorePage,
+    MatchDetailFormationPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,10 @@ const firebaseConfig = {
     PastMatchesPage,
     UpcomingMatchesPage,
     AddTeamMemberPage,
-    AddMatchPage
+    AddMatchPage,
+    MatchDetailPage,
+    MatchDetailScorePage,
+    MatchDetailFormationPage
   ],
   providers: [
     StatusBar,

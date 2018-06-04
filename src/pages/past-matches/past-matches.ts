@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {App, NavController, NavParams} from 'ionic-angular';
+import {MatchDetailPage} from "../match-detail/match-detail";
+import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
+import {Observable} from "rxjs/Observable";
 
 /**
  * Generated class for the PastMatchesPage page.
@@ -13,12 +16,18 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'past-matches.html',
 })
 export class PastMatchesPage {
+  matches: Observable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
+    this.matches = this.firebaseService.getMatches();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PastMatchesPage');
+  }
+
+  navigateToMatch(match) {
+    this.app.getRootNav().push(MatchDetailPage, match);
   }
 
 }

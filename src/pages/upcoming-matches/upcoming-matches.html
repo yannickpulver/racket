@@ -9,9 +9,9 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let item of matches | async">
-      <ion-item detail-push>
+      <button ion-item detail-push (click)="navigateToMatch(item)">
         <h1>hi</h1>
-      </ion-item>
+      </button>
       <ion-item-options slide="right">
         <button ion-button color="primary" (click)="editItem(item)" icon-only>
           <ion-icon name="cog"></ion-icon>

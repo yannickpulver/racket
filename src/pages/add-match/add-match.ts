@@ -15,12 +15,11 @@ import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase
   templateUrl: 'add-match.html',
 })
 export class AddMatchPage {
-
-  match = {
-    team1: "",
-    team2: "",
-    description: "",
-    date: null
+  match: {
+    team1: String,
+    team2: String,
+    description: String,
+    date: Date
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker, public firebaseService: FirebaseServiceProvider) {

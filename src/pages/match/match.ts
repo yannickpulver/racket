@@ -6,6 +6,7 @@ import {AddTeamMemberPage} from "../add-team-member/add-team-member";
 import {AddMatchPage} from "../add-match/add-match";
 import {Observable} from "rxjs/Observable";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
+import {MatchDetailPage} from "../match-detail/match-detail";
 
 /**
  * Generated class for the MatchPage page.

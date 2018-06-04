@@ -16,9 +16,15 @@ import {Match} from "../../models/Match";
   templateUrl: 'add-match.html',
 })
 export class AddMatchPage {
-  match: Match;
+  match: Match = <Match>{}
+
+  key: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker, public firebaseService: FirebaseServiceProvider) {
+    if (this.navParams.get("key") != undefined) {
+      this.match = this.navParams.get("match");
+      this.key = this.navParams.get("key");
+    }
   }
 
   ionViewDidLoad() {

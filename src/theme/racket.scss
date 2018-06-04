@@ -29,20 +29,23 @@
   margin: 0 0 4px;
 }
 
-
 // –––– Card
 
 .card {
   background: $white;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-  border-radius: 2px;
+  border-radius: 2px; 
   padding: $spacer $spacer * 1.5;
   & + .card {
     margin-top: 8px;
   }
 }
 
-.card__text {
+.list .card{
+  padding: 0;
+}
+
+.item-inner .card__text, .card__text {
   color: $silver;
   font-size: 12px;
   padding: 0;
@@ -50,7 +53,7 @@
   font-weight: 500;
 }
 
-.card__title {
+.item-inner .card__title, .card__title {
   font-size: 18px;
   font-weight: 700;
   padding: 0;

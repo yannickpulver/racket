@@ -18,19 +18,13 @@ import {TeamMember} from "../../models/TeamMember";
 export class AddTeamMemberPage {
 
   key: number = -1;
-  teamMember: TeamMember;
+  teamMember: TeamMember = <TeamMember>{};
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, public singleton: SingletonProvider) {
-    console.log(navParams);
     if (this.navParams.get("key") != undefined) {
       this.teamMember = this.navParams.get("teamMember");
       this.key = this.navParams.get("key");
-    } else {
-      this.teamMember = {
-        name: "",
-        teamId: this.singleton.teamId,
-        classification: -1
-      };
     }
   }
 

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {DatePicker} from "@ionic-native/date-picker";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
+import {Match} from "../../models/Match";
 
 /**
  * Generated class for the AddMatchPage page.
@@ -15,20 +16,9 @@ import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase
   templateUrl: 'add-match.html',
 })
 export class AddMatchPage {
-  match: {
-    team1: String,
-    team2: String,
-    description: String,
-    date: Date
-  };
+  match: Match;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker, public firebaseService: FirebaseServiceProvider) {
-    this.match = {
-      team1: "",
-      team2: "",
-      description: "",
-      date: null
-    }
   }
 
   ionViewDidLoad() {

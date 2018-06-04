@@ -19,8 +19,8 @@
 <ion-content padding>
 
   <ion-tabs tabsPlacement="top" tabsLayout="icon-hide" tabsHighlight="true" class="tiny-tabs">
-    <ion-tab [root]="tab1Root" tabTitle="Formation"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="Score"></ion-tab>
+    <ion-tab [root]="tab1Root" [rootParams]="match" tabTitle="Formation"></ion-tab>
+    <ion-tab [root]="tab2Root" [rootParams]="match" tabTitle="Score"></ion-tab>
   </ion-tabs>
 
 </ion-content>

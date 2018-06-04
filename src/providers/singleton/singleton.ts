@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 /*
   Generated class for the SingletonProvider provider.
@@ -9,5 +8,5 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class SingletonProvider {
- public teamId:number = -1
+  public teamId: string = ""
 }

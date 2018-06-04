@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {Match} from "../../models/Match";
 
 /**
  * Generated class for the MatchDetailScorePage page.
@@ -13,8 +14,10 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'match-detail-score.html',
 })
 export class MatchDetailScorePage {
+  match: Match;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.match = this.navParams.data;
   }
 
   ionViewDidLoad() {

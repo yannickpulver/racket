@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 import {SingletonProvider} from "../../providers/singleton/singleton";
+import {TeamMember} from "../../models/TeamMember";
 
 /**
  * Generated class for the AddTeamMemberPage page.
@@ -17,7 +18,7 @@ import {SingletonProvider} from "../../providers/singleton/singleton";
 export class AddTeamMemberPage {
 
   key: number = -1;
-  teamMember = {};
+  teamMember: TeamMember;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, public singleton: SingletonProvider) {
     console.log(navParams);
@@ -28,7 +29,7 @@ export class AddTeamMemberPage {
       this.teamMember = {
         name: "",
         teamId: this.singleton.teamId,
-        classification: ""
+        classification: -1
       };
     }
   }

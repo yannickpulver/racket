@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 import {SingletonProvider} from "../../providers/singleton/singleton";
 import {AddTeamMemberPage} from "../add-team-member/add-team-member";
+import {TeamMember} from "../../models/TeamMember";
 
 /**
  * Generated class for the TeamPage page.
@@ -20,7 +21,7 @@ import {AddTeamMemberPage} from "../add-team-member/add-team-member";
 export class TeamPage {
 
   teamName = "2. Liga Herren (Grp 59)";
-  teamMembers: Observable<any>;
+  teamMembers: Observable<TeamMember>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, public singleton: SingletonProvider) {
     this.teamMembers = this.firebaseService.getTeamMembers();

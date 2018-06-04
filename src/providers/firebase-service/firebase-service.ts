@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
 import {Observable} from "rxjs/Observable";
+import {Match} from "../../models/Match";
+import {TeamMember} from "../../models/TeamMember";
 
 /*
   Generated class for the FirebaseServiceProvider provider.
@@ -10,10 +12,10 @@ import {Observable} from "rxjs/Observable";
 */
 @Injectable()
 export class FirebaseServiceProvider {
-  matchesRef: AngularFireList<any>;
+  matchesRef: AngularFireList<Match>;
   matches: Observable<any>;
 
-  teamMembersRef: AngularFireList<any>;
+  teamMembersRef: AngularFireList<TeamMember>;
   teamMembers: Observable<any>;
 
   constructor(public afd: AngularFireDatabase) {

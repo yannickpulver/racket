@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {AddTeamMemberPage} from "../add-team-member/add-team-member";
-import {PastMatchesPage} from "../past-matches/past-matches";
-import {UpcomingMatchesPage} from "../upcoming-matches/upcoming-matches";
 import {MatchDetailScorePage} from "../match-detail-score/match-detail-score";
 import {MatchDetailFormationPage} from "../match-detail-formation/match-detail-formation";
+import {Match} from "../../models/Match";
 
 /**
  * Generated class for the MatchDetailPage page.
@@ -18,12 +16,8 @@ import {MatchDetailFormationPage} from "../match-detail-formation/match-detail-f
   templateUrl: 'match-detail.html',
 })
 export class MatchDetailPage {
-  match: {
-    team1: String,
-    team2: String,
-    description: String,
-    date: Date
-  };
+  match: Match;
+
   tab1Root = MatchDetailScorePage;
   tab2Root = MatchDetailFormationPage;
 

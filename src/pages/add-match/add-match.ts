@@ -16,8 +16,7 @@ import {Match} from "../../models/Match";
   templateUrl: 'add-match.html',
 })
 export class AddMatchPage {
-  match: Match = <Match>{}
-
+  match: Match = <Match>{};
   key: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker, public firebaseService: FirebaseServiceProvider) {

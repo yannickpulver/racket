@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import {Observable} from "rxjs/Observable";
+import { Observable } from "rxjs/Observable";
+import { SingletonProvider } from "../../providers/singleton/singleton";
+import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
+
 
 
 /**
@@ -19,15 +22,21 @@ import {Observable} from "rxjs/Observable";
 export class LoginPage {
 
   teams: Observable<any>;
+  teamId: "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public singleton: SingletonProvider, public firebaseService: FirebaseServiceProvider) {
+    this.teams = this.firebaseService.getTeamMembers();
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  openView(){
+  openView(form){
+    this.singleton.teamId = this.teamId;
+
+    if(this.teamId == null) return;
+
     this.navCtrl.push(TabsPage);
   }
 

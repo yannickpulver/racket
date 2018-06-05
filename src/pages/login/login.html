@@ -11,8 +11,7 @@
     <p class="logo-container__subtitle">Management für Interclub-Spiele</p>
   </div>
 
-  <form (ngSubmit)="openView()">
-
+  <form (ngSubmit)="openView(form)">
     <div class="login-container">
       <!--<ion-item class="login-container__input">-->
         <!--<ion-label>-->
@@ -25,9 +24,8 @@
         <ion-label>
           <ion-icon color="primary" name="tennisball"></ion-icon>
         </ion-label>
-        <ion-select class="select" placeholder="Your Interclub Team" [(ngModel)]="teams" name="team">
-          <ion-option>Baden 3.Liga</ion-option>
-          <ion-option>Baden 2.Liga</ion-option>
+        <ion-select class="select" placeholder="Your Interclub Team" name="team" [(ngModel)]="teamId">
+          <ion-option *ngFor="let item of teams | async" [value]="item.name">  {{item.name}} </ion-option>
         </ion-select>
       </ion-item>
       <button class="login-container__submit" ion-button block>

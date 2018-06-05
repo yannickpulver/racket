@@ -34,7 +34,7 @@
 .card {
   background: $white;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-  border-radius: 2px; 
+  border-radius: 2px;
   padding: $spacer $spacer * 1.5;
   & + .card {
     margin-top: 8px;
@@ -61,6 +61,28 @@
   color: $tundora;
 }
 
+.card__number{
+  height: 50px;
+  max-width: 50px;
+  background: $primary;
+  color: $white;
+  font-size: 23px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.card__name{
+  margin-left: 8px;
+}
+
+.score .points{
+  max-width: 30px;
+}
+
+.score .sets{
+  max-width: 50px;
+}
+
 .tiny-tabs .tab-button {
   min-height: 4.6rem;
 }
@@ -69,4 +91,8 @@
   display: block;
   color: #ffffffb3;
   font-size: 12px;
+}
+
+.no-margin .label-md{
+  margin: 0;
 }

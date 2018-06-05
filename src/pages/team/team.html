@@ -15,9 +15,20 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of teamMembers | async">
-      <ion-item detail-push>
-        <h1>{{item.name}} — {{item.classification}}</h1>
+    <ion-item-sliding class="card" no-margin *ngFor="let item of teamMembers | async">
+      <ion-item no-padding detail-push no-lines>
+        <ion-label no-margin>
+          <ion-grid no-padding>
+            <ion-row align-items-center>
+              <ion-col class="card__number">
+                {{item.classification}}
+              </ion-col>
+              <ion-col class="card__name">
+                {{item.name}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-label>
       </ion-item>
       <ion-item-options slide="right">
         <button ion-button color="primary" (click)="editItem(item)" icon-only>

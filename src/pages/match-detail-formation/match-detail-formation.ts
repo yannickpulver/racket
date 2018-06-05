@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
 import {Match} from "../../models/Match";
+import {SingleGame} from "../../models/SingleGame";
+import {SingletonProvider} from "../../providers/singleton/singleton";
 
 /**
  * Generated class for the MatchDetailFormationPage page.
@@ -15,9 +17,13 @@ import {Match} from "../../models/Match";
 })
 export class MatchDetailFormationPage {
   match: Match;
+  isTeam1: boolean;
+  filterargs = {teamId: this.singleton.teamId};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public singleton: SingletonProvider) {
     this.match = this.navParams.data;
+    this.isTeam1 = this.singleton.teamId == this.match.team1;
+    this.filterargs = {teamId: this.singleton.teamId};
   }
 
   ionViewDidLoad() {

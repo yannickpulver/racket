@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {DatePicker} from "@ionic-native/date-picker";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 import {Match} from "../../models/Match";
+import {SingleGame} from "../../models/SingleGame";
 
 /**
  * Generated class for the AddMatchPage page.
@@ -42,6 +43,19 @@ export class AddMatchPage {
   }
 
   addItem() {
+    this.match.singleGames = [];
+    for (var i = 0; i < 6; i++) {
+      var singleGame = <SingleGame>{};
+      singleGame.index = i;
+      singleGame.teamId = this.match.team1;
+      this.match.singleGames.push(singleGame)
+
+      var singleGame2 = <SingleGame>{};
+      singleGame2.index = i;
+      singleGame2.teamId = this.match.team2;
+      this.match.singleGames.push(singleGame2)
+    }
+
     this.firebaseService.addMatch(this.match).then(() => {
       this.navCtrl.pop();
     });

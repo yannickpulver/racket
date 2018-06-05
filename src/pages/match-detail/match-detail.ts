@@ -18,8 +18,8 @@ import {Match} from "../../models/Match";
 export class MatchDetailPage {
   match: Match;
 
-  tab1Root = MatchDetailScorePage;
-  tab2Root = MatchDetailFormationPage;
+  tab1Root = MatchDetailFormationPage;
+  tab2Root = MatchDetailScorePage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.match = this.navParams.data;

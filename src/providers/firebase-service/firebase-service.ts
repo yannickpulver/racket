@@ -53,4 +53,8 @@ export class FirebaseServiceProvider {
   addMatch(match) {
     return this.matchesRef.push(match);
   }
+
+  updateMatch(key, match) {
+    return this.matchesRef.update(key, match);
+  }
 }

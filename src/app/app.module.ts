@@ -26,6 +26,7 @@ import {DatePicker} from "@ionic-native/date-picker";
 import {MatchDetailPage} from "../pages/match-detail/match-detail";
 import {MatchDetailScorePage} from "../pages/match-detail-score/match-detail-score";
 import {MatchDetailFormationPage} from "../pages/match-detail-formation/match-detail-formation";
+import {FilterPipe} from "../pipe/FilterPipe";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4r535VHKNdUs6Kd-gdD4sWnJ8qskTq04",
@@ -51,7 +52,8 @@ const firebaseConfig = {
     AddMatchPage,
     MatchDetailPage,
     MatchDetailScorePage,
-    MatchDetailFormationPage
+    MatchDetailFormationPage,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

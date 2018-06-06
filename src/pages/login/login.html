@@ -15,19 +15,18 @@
 
     <div class="login-container">
       <!--<ion-item class="login-container__input">-->
-        <!--<ion-label>-->
-          <!--<ion-icon color="primary" name="contact"></ion-icon>-->
-        <!--</ion-label>-->
-        <!--<ion-input placeholder="Dein Vor- & Nachname" clearInput></ion-input>-->
+      <!--<ion-label>-->
+      <!--<ion-icon color="primary" name="contact"></ion-icon>-->
+      <!--</ion-label>-->
+      <!--<ion-input placeholder="Dein Vor- & Nachname" clearInput></ion-input>-->
       <!--</ion-item>-->
 
       <ion-item class="login-container__input item-select">
         <ion-label>
           <ion-icon color="primary" name="tennisball"></ion-icon>
         </ion-label>
-        <ion-select class="select" placeholder="Your Interclub Team" [(ngModel)]="teams" name="team">
-          <ion-option>Baden 3.Liga</ion-option>
-          <ion-option>Baden 2.Liga</ion-option>
+        <ion-select class="select" placeholder="Your Interclub Team" [(ngModel)]="teamId" name="team">
+          <ion-option *ngFor="let team of teams | async" [value]="team.key">{{team.name}}</ion-option>
         </ion-select>
       </ion-item>
       <button class="login-container__submit" ion-button block>

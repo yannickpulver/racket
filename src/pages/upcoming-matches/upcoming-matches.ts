@@ -5,6 +5,7 @@ import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase
 import {MatchDetailPage} from "../match-detail/match-detail";
 import {App} from 'ionic-angular';
 import {Match} from "../../models/Match";
+import {Team} from "../../models/Team";
 
 
 /**
@@ -19,9 +20,12 @@ import {Match} from "../../models/Match";
   templateUrl: 'upcoming-matches.html',
 })
 export class UpcomingMatchesPage {
-  matches: Observable<Match>;
+  matches: Observable<Match[]>;
+  teams: Observable<any>;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
+    this.teams = this.firebaseService.getTeams();
     this.matches = this.firebaseService.getMatches();
   }
 
@@ -31,6 +35,11 @@ export class UpcomingMatchesPage {
 
   navigateToMatch(match) {
    this.app.getRootNav().push(MatchDetailPage, match);
+  }
+
+  getTeamByKey(key) {
+    console.log(this.teams.map(team => team.filter(item => item.key == key)[0]));
+    return this.teams.map(team => team.filter(item => item.key == key)[0]);
   }
 
 }

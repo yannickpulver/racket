@@ -4,6 +4,8 @@ import {DatePicker} from "@ionic-native/date-picker";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 import {Match} from "../../models/Match";
 import {SingleGame} from "../../models/SingleGame";
+import {Team} from "../../models/Team";
+import {Observable} from "rxjs/Observable";
 
 /**
  * Generated class for the AddMatchPage page.
@@ -18,6 +20,7 @@ import {SingleGame} from "../../models/SingleGame";
 })
 export class AddMatchPage {
   match: Match = <Match>{};
+  teams: Observable<Team[]>;
   key: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker, public firebaseService: FirebaseServiceProvider) {
@@ -25,6 +28,7 @@ export class AddMatchPage {
       this.match = this.navParams.get("match");
       this.key = this.navParams.get("key");
     }
+    this.teams = this.firebaseService.getTeams();
   }
 
   ionViewDidLoad() {
@@ -57,7 +61,7 @@ export class AddMatchPage {
     }
 
     this.firebaseService.addMatch(this.match).then(() => {
-      this.navCtrl.pop();
+      this.navCtrl. pop();
     });
   }
 }

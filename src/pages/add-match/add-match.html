@@ -21,8 +21,7 @@
         <ion-icon color="primary" name="tennisball"></ion-icon>
       </ion-label>
       <ion-select class="select" placeholder="Team 1." [(ngModel)]="match.team1" name="team1">
-        <ion-option>Baden 3.Liga</ion-option>
-        <ion-option>Baden 2.Liga</ion-option>
+        <ion-option *ngFor="let team of teams | async" [value]="team.key">{{team.name}}</ion-option>
       </ion-select>
     </ion-item>
 
@@ -31,8 +30,7 @@
         <ion-icon color="primary" name="tennisball"></ion-icon>
       </ion-label>
       <ion-select class="select" placeholder="Team 2." [(ngModel)]="match.team2" name="team2">
-        <ion-option>Baden 3.Liga</ion-option>
-        <ion-option>Baden 2.Liga</ion-option>
+        <ion-option *ngFor="let team of teams | async" [value]="team.key">{{team.name}}</ion-option>
       </ion-select>
     </ion-item>
 

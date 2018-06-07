@@ -11,8 +11,7 @@
         <ion-icon color="primary" name="contact"></ion-icon>
       </ion-label>
       <ion-select class="select" placeholder="Player" [(ngModel)]="match.singleGames[match.singleGames.indexOf(item)].player" name="team-{{item.key}}">
-        <ion-option>Player</ion-option>
-        <ion-option>Player</ion-option>
+        <ion-option *ngFor="let teamMember of teamMembers | async" [value]="teamMember.key">{{teamMember.name}}</ion-option>
       </ion-select>
     </ion-item>
 </div>

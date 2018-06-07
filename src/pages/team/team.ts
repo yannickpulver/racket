@@ -24,7 +24,7 @@ export class TeamPage {
   teamMembers: Observable<TeamMember>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, public singleton: SingletonProvider) {
-    this.teamMembers = this.firebaseService.getTeamMembers();
+    this.teamMembers = this.firebaseService.getTeamMembers(this.singleton.teamId);
   }
 
   ionViewDidLoad() {

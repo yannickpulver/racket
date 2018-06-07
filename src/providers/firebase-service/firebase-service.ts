@@ -40,10 +40,14 @@ export class FirebaseServiceProvider {
     this.teams = this.teamsRef.snapshotChanges().map(changes => {
       return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
     });
-
   }
 
-  getTeamMembers() {
+  getTeamMembers(key) {
+    this.teamMembersRef = this.afd.list('/teammember', ref => ref.orderByChild("teamId").equalTo(key));
+    this.teamMembers = this.teamMembersRef.snapshotChanges().map(changes => {
+      return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+    });
+
     return this.teamMembers;
   }
 

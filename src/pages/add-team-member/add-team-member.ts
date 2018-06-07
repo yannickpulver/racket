@@ -25,6 +25,8 @@ export class AddTeamMemberPage {
     if (this.navParams.get("key") != undefined) {
       this.teamMember = this.navParams.get("teamMember");
       this.key = this.navParams.get("key");
+    } else {
+      this.teamMember.teamId = this.singleton.teamId;
     }
   }
 

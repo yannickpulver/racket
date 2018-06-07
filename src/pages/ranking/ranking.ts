@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 import {App} from 'ionic-angular';
-import {Match} from "../../models/Match";
+import {Match, MatchIntern} from "../../models/Match";
 import {Observable} from "rxjs/Observable";
 /**
  * Generated class for the RankingPage page.
@@ -18,10 +18,11 @@ import {Observable} from "rxjs/Observable";
 })
 export class RankingPage {
 
-  matches: Observable<Match>;
+  matches: Observable<MatchIntern[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
     this.matches = this.firebaseService.getMatches();
+
   }
 
   ionViewDidLoad() {

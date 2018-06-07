@@ -20,13 +20,14 @@ import {Team} from "../../models/Team";
   templateUrl: 'upcoming-matches.html',
 })
 export class UpcomingMatchesPage {
-  matches: Observable<Match[]>;
-  teams: Observable<Team[]>;
+  matches: Observable<any>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
-    this.teams = this.firebaseService.getTeams();
     this.matches = this.firebaseService.getMatches();
+
+    this.matches.subscribe(value => console.log(value));
+
   }
 
   ionViewDidLoad() {
@@ -34,11 +35,12 @@ export class UpcomingMatchesPage {
   }
 
   navigateToMatch(match) {
-   this.app.getRootNav().push(MatchDetailPage, match);
+    this.app.getRootNav().push(MatchDetailPage, match);
   }
 
-  getTeamByKey(key) {
-    return this.teams.map(team => team.filter(item => item.key == key));
-  }
+  // getTeamByKey(key) {
+  //   console.log(this.firebaseService.getTeamByKey(key));
+  //   return this.firebaseService.getTeamByKey(key);
+  // }
 
 }

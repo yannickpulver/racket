@@ -7,16 +7,12 @@
 
 <ion-content padding>
   <h3 class="tiny-title">My Team</h3>
-  <ul>
-    <li>test</li>
-    <li *ngFor="let item of teams | async">{{item.name}}</li>
-  </ul>
   <ion-list>
     <ion-item-sliding class="card" *ngFor="let item of matches | async">
       <button ion-item detail-push no-lines (click)="navigateToMatch(item)">
         <p class="card__text">{{item.date}}</p>
-        <h2 class="card__title"><span class="primary-text">{{getTeamByKey(item.team1)}}</span> vs
-          {{item.team2}}</h2>
+        <h2 class="card__title"><span class="primary-text">{{item.team1_name}}</span> vs
+          {{item.team2_name}}</h2>
         <p class="card__text">Round {{item.round}}</p>
       </button>
       <ion-item-options slide="right">

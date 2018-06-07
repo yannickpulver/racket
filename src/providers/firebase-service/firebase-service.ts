@@ -22,11 +22,14 @@ export class FirebaseServiceProvider {
   teamsRef: AngularFireList<Team>;
   teams: Observable<any>;
 
+  teamById: Observable<any>;
+
   constructor(public afd: AngularFireDatabase) {
     this.matchesRef = this.afd.list('/matches');
     this.matches = this.matchesRef.snapshotChanges().map(changes => {
       return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
     });
+
 
     this.teamMembersRef = this.afd.list('/teammember');
     this.teamMembers = this.teamMembersRef.snapshotChanges().map(changes => {
@@ -37,6 +40,7 @@ export class FirebaseServiceProvider {
     this.teams = this.teamsRef.snapshotChanges().map(changes => {
       return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
     });
+
   }
 
   getTeamMembers() {
@@ -56,7 +60,28 @@ export class FirebaseServiceProvider {
   }
 
   getMatches() {
-    return this.matches;
+    return this.afd.list("matches").snapshotChanges()
+      .map(changes => {
+        return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+      }).map(matches => {
+        matches.forEach(match => {
+          this.afd.object('/teams/' + match.team1).snapshotChanges()
+            .map(change => {
+              return {key: change.payload.key, ...change.payload.val()};
+            }).subscribe(value => {
+            match.team1_name = value.name;
+          });
+
+          this.afd.object('/teams/' + match.team2).snapshotChanges()
+            .map(change => {
+              return {key: change.payload.key, ...change.payload.val()};
+            }).subscribe(value => {
+            match.team2_name = value.name;
+          });
+          return match;
+        });
+        return matches;
+      });
   }
 
   addMatch(match: Match) {
@@ -76,6 +101,9 @@ export class FirebaseServiceProvider {
   }
 
   getTeamByKey(key) {
-    return this.teams.filter(value => value.key == key);
+    this.teamById = this.afd.object('/teams/' + key).snapshotChanges().map(changes => {
+      return {key: changes.payload.key, ...changes.payload.val()};
+    });
+    return this.teamById;
   }
 }

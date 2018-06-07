@@ -21,7 +21,7 @@ import {Team} from "../../models/Team";
 })
 export class UpcomingMatchesPage {
   matches: Observable<Match[]>;
-  teams: Observable<any>;
+  teams: Observable<Team[]>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
@@ -38,8 +38,7 @@ export class UpcomingMatchesPage {
   }
 
   getTeamByKey(key) {
-    console.log(this.teams.map(team => team.filter(item => item.key == key)[0]));
-    return this.teams.map(team => team.filter(item => item.key == key)[0]);
+    return this.teams.map(team => team.filter(item => item.key == key));
   }
 
 }

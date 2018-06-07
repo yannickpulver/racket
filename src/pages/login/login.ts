@@ -32,6 +32,7 @@ export class LoginPage {
   }
 
   openView() {
+    if (this.teamId == null) return;
     this.singleton.teamId = this.teamId;
     this.navCtrl.push(TabsPage);
   }

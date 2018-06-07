@@ -4,7 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 import {MatchDetailPage} from "../match-detail/match-detail";
 import {App} from 'ionic-angular';
-import {Match} from "../../models/Match";
+import {Match, MatchIntern} from "../../models/Match";
 import {Team} from "../../models/Team";
 
 
@@ -20,7 +20,7 @@ import {Team} from "../../models/Team";
   templateUrl: 'upcoming-matches.html',
 })
 export class UpcomingMatchesPage {
-  matches: Observable<any>;
+  matches: Observable<MatchIntern[]>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {

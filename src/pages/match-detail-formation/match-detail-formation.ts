@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Match} from "../../models/Match";
+import {Match, MatchIntern} from "../../models/Match";
 import {SingleGame} from "../../models/SingleGame";
 import {SingletonProvider} from "../../providers/singleton/singleton";
 
@@ -16,7 +16,7 @@ import {SingletonProvider} from "../../providers/singleton/singleton";
   templateUrl: 'match-detail-formation.html',
 })
 export class MatchDetailFormationPage {
-  match: Match;
+  match: MatchIntern;
   isTeam1: boolean;
   filterargs = {teamId: this.singleton.teamId};
 

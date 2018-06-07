@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {MatchDetailScorePage} from "../match-detail-score/match-detail-score";
 import {MatchDetailFormationPage} from "../match-detail-formation/match-detail-formation";
-import {Match} from "../../models/Match";
+import {Match, MatchIntern} from "../../models/Match";
 
 /**
  * Generated class for the MatchDetailPage page.
@@ -16,7 +16,7 @@ import {Match} from "../../models/Match";
   templateUrl: 'match-detail.html',
 })
 export class MatchDetailPage {
-  match: Match;
+  match: MatchIntern;
 
   tab1Root = MatchDetailFormationPage;
   tab2Root = MatchDetailScorePage;

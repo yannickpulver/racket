@@ -3,7 +3,7 @@ import {App, NavController, NavParams} from 'ionic-angular';
 import {MatchDetailPage} from "../match-detail/match-detail";
 import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase-service";
 import {Observable} from "rxjs/Observable";
-import {Match} from "../../models/Match";
+import {Match, MatchIntern} from "../../models/Match";
 
 /**
  * Generated class for the PastMatchesPage page.
@@ -17,7 +17,7 @@ import {Match} from "../../models/Match";
   templateUrl: 'past-matches.html',
 })
 export class PastMatchesPage {
-  matches: Observable<Match>;
+  matches: Observable<MatchIntern[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
     this.matches = this.firebaseService.getMatches();

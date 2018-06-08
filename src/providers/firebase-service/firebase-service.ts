@@ -104,74 +104,48 @@ export class FirebaseServiceProvider {
     return this.teams;
   }
 
+  getTeamsWithScore() {
+    return this.afd.list("teams").snapshotChanges()
+      .map(changes => {
+        return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+      }).map(teams => {
+        teams.forEach(team => {
+          team.winSet = 0;
+          team.lostSet = 0;
+          return this.afd.list("matches").snapshotChanges()
+            .map(changes => {
+              return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+            }).subscribe(matches => {
+              matches.forEach(match => {
+                if (match.team1 == team.key || match.team2 == team.key) {
+                  match.singleGames.forEach(singleGame => {
+                    if (singleGame.teamId == team.key) {
+                      team.winSet += +singleGame.score;
+                    } else {
+                      team.lostSet += +singleGame.score;
+                    }
+                  });
+                  match.duoGames.forEach(duoGame => {
+                    if (duoGame.teamId == team.key) {
+                      team.winSet += +duoGame.score;
+                    } else {
+                      team.lostSet += +duoGame.score;
+                    }
+                  });
+                }
+                return match;
+              });
+              return matches;
+            });
+        });
+        return teams;
+      });
+  }
+
   getTeamByKey(key) {
     this.teamById = this.afd.object('/teams/' + key).snapshotChanges().map(changes => {
       return {key: changes.payload.key, ...changes.payload.val()};
     });
     return this.teamById;
   }
-
-  getMatchesWithScore(){
-
-    return this.afd.list("teams").snapshotChanges().map(changes => {
-      return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
-    }).map(teams => {
-      teams.forEach(team =>{
-        this.afd.object("matches").snapshotChanges()
-          .map(change => {
-            return {key: change.payload.key, ...change.payload.val()};
-          }).forEach(match =>{
-          }
-        );
-
-       /// team.score = 0;
-        return team;
-        });
-      return teams;
-    });
-
-    //this.teams.subscribe(value => value.score = 0);
-
-    /*this.afd.list("matches").snapshotChanges()
-      .map(changes => {
-        return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
-      }).map(matches => {
-        matches.forEach(match => {
-
-          this.afd.object('/teams/' + match.team1).snapshotChanges()
-            .map(change => {
-              return {key: change.payload.key, ...change.payload.val()};
-            }).subscribe(value => {
-            match.team1_name = value.name;
-          });
-
-          var temp = 0;
-
-          match.singleGames.forEach(game =>{
-            if(game.score == 2){
-              temp = temp + 1;
-            }
-          });
-
-          match.duoGames.forEach(game =>{
-            if(game.score == 2){
-              temp = temp + 1;
-            }
-          });
-
-          match.score = temp;
-
-          this.afd.object('/teams/' + match.team2).snapshotChanges()
-            .map(change => {
-              return {key: change.payload.key, ...change.payload.val()};
-            }).subscribe(value => {
-            match.team2_name = value.name;
-          });
-          return match;
-        });
-        return matches;
-      });*/
-  }
-
-
 }

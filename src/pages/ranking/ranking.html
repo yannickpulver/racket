@@ -26,7 +26,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-      <ion-item no-padding detail-push no-lines *ngFor="let item of ranking" class="card score" no-margin >
+      <ion-item no-padding detail-push no-lines *ngFor="let item of teams | async" class="card score" no-margin >
         <ion-label no-margin>
           <ion-grid no-padding>
             <ion-row align-items-center>
@@ -41,7 +41,6 @@
               </ion-col>
               <ion-col class="sets">
                 {{item.winSet}} : {{item.lostSet}}
-
               </ion-col>
             </ion-row>
           </ion-grid>

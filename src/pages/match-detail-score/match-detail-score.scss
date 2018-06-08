@@ -1,3 +1,26 @@
 page-match-detail-score {
+  .select-icon {
+    display: none;
+  }
 
+  .select-text {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .login-container__input ion-select.select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .col-twice {
+    flex-grow: 2;
+  }
+
+  .col-single-center {
+    text-align: center;
+    flex-grow: 1;
+  }
 }
+

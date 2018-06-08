@@ -1,4 +1,5 @@
 import {SingleGame} from "./SingleGame";
+import {DuoGame} from "./DuoGame";
 
 export interface Match {
   team1: string;
@@ -6,7 +7,7 @@ export interface Match {
   round: number;
   date: Date;
   singleGames: SingleGame[];
-  duoGames: SingleGame[];
+  duoGames: DuoGame[];
 }
 
 export interface MatchIntern {
@@ -17,5 +18,5 @@ export interface MatchIntern {
   round: number;
   date: Date;
   singleGames: SingleGame[];
-  duoGames: SingleGame[];
+  duoGames: DuoGame[];
 }

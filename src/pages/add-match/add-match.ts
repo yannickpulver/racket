@@ -6,6 +6,7 @@ import {Match} from "../../models/Match";
 import {SingleGame} from "../../models/SingleGame";
 import {Team} from "../../models/Team";
 import {Observable} from "rxjs/Observable";
+import {DuoGame} from "../../models/DuoGame";
 
 /**
  * Generated class for the AddMatchPage page.
@@ -59,6 +60,22 @@ export class AddMatchPage {
       singleGame2.teamId = this.match.team2;
       this.match.singleGames.push(singleGame2)
     }
+
+
+    this.match.duoGames = [];
+    for (var i = 0; i < 3; i++) {
+      var duoGame = <DuoGame>{};
+      duoGame.index = i;
+      duoGame.teamId = this.match.team1;
+      this.match.duoGames.push(duoGame)
+
+      var duoGame2 = <DuoGame>{};
+      duoGame2.index = i;
+      duoGame2.teamId = this.match.team2;
+      this.match.duoGames.push(duoGame2)
+    }
+
+
 
     this.firebaseService.addMatch(this.match).then(() => {
       this.navCtrl. pop();

@@ -27,36 +27,5 @@
   </ion-list>
 
   <h3 class="tiny-title">Other Teams</h3>
-  <ion-list>
-    <ion-item-sliding class="card" *ngFor="let item of matches | async">
-      <ion-item detail-push no-lines>
-        <p class="card__text">{{item.date}}</p>
-        <h2 class="card__title"><span class="primary-text">Baden</span> vs Rothenburg</h2>
-        <p class="card__text">Round {{item.round}}</p>
-      </ion-item>
-      <ion-item-options slide="right">
-        <button ion-button color="primary" (click)="editItem(item)" icon-only>
-          <ion-icon name="cog"></ion-icon>
-        </button>
-        <button ion-button color="danger" (click)="removeItem(item.key)" icon-only>
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
 
-  <section class="my-team">
-    <h3 class="tiny-title">Other Teams</h3>
-    <div class="card">
-      <p class="card__text">09.04.2018 – 18:00</p>
-      <h2 class="card__title"><span class="primary-text">Baden</span> vs Rothenburg</h2>
-      <p class="card__text">Runde 1</p>
-    </div>
-
-    <div class="card">
-      <p class="card__text">09.04.2018 – 18:00</p>
-      <h2 class="card__title">Rothenburg vs <span class="primary-text">Baden</span></h2>
-      <p class="card__text">Runde 1</p>
-    </div>
-  </section>
 </ion-content>

@@ -30,6 +30,8 @@ export class MatchDetailFormationPage {
       console.log(value);
     });
     this.match = this.navParams.data;
+
+    console.log(this.match);
     this.isTeam1 = this.singleton.teamId == this.match.team1;
     this.filterargs = {teamId: this.singleton.teamId};
   }

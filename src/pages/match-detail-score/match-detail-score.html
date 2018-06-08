@@ -5,20 +5,21 @@
   Ionic pages and navigation.
 -->
 <ion-content padding>
+  <h3 class="tiny-title">Single Games</h3>
   <div class="card card-score" *ngFor="let item of match.singleGames | teamfilter:filterargs; let i = index">
     <ion-item class="login-container__input item-select item-no-margin">
       <ion-label class="card__number">
         {{i+1}}
       </ion-label>
       <ion-label>
-        {{item.player}}
+        {{item.player_name}}
       </ion-label>
       <ion-label class="label-no-margin label-fullsized">
         <ion-grid no-padding>
           <ion-row align-items-center>
             <ion-col class="col-twice">
               <ion-select class="select" (ionChange)="updateMatch()"
-                          [(ngModel)]="match.singleGames[match.singleGames.indexOf(item)].score"
+                          [(ngModel)]="item.score"
                           name="team-score-{{item.key}}">
                 <ion-option>0</ion-option>
                 <ion-option>1</ion-option>
@@ -30,7 +31,50 @@
             </ion-col>
             <ion-col class="col-twice">
               <ion-select class="select" (ionChange)="updateMatch()"
-                          [(ngModel)]="match.singleGames[match.singleGames.indexOf(item)].score2"
+                          [(ngModel)]="item.score2"
+                          name="team-score-{{item.key}}">
+                <ion-option>0</ion-option>
+                <ion-option>1</ion-option>
+                <ion-option>2</ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+
+    </ion-item>
+  </div>
+  <br>
+  <br>
+  <h3 class="tiny-title">Double Games</h3>
+  <div class="card card-score" *ngFor="let item of match.duoGames | teamfilter:filterargs; let i = index">
+    <ion-item class="login-container__input item-select item-no-margin">
+      <ion-label class="card__number card__number--double">
+        {{i+1}}
+      </ion-label>
+      <ion-label>
+        {{item.player1_name}}
+        <br>
+        {{item.player2_name}}
+      </ion-label>
+      <ion-label class="label-no-margin label-fullsized">
+        <ion-grid no-padding>
+          <ion-row align-items-center>
+            <ion-col class="col-twice">
+              <ion-select class="select" (ionChange)="updateMatch()"
+                          [(ngModel)]="item.score"
+                          name="team-score-{{item.key}}">
+                <ion-option>0</ion-option>
+                <ion-option>1</ion-option>
+                <ion-option>2</ion-option>
+              </ion-select>
+            </ion-col>
+            <ion-col class="col-single-center">
+              :
+            </ion-col>
+            <ion-col class="col-twice">
+              <ion-select class="select" (ionChange)="updateMatch()"
+                          [(ngModel)]="item.score2"
                           name="team-score-{{item.key}}">
                 <ion-option>0</ion-option>
                 <ion-option>1</ion-option>

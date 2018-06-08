@@ -8,24 +8,49 @@
 <ion-content padding>
   <h3 class="tiny-title">My Team</h3>
   <ion-list>
-    <ion-item-sliding class="card" *ngFor="let item of matches | async">
-      <button ion-item detail-push no-lines (click)="navigateToMatch(item)">
-        <p class="card__text">{{item.date}}</p>
-        <h2 class="card__title"><span class="primary-text">{{item.team1_name}}</span> vs
-          {{item.team2_name}}</h2>
-        <p class="card__text">Round {{item.round}}</p>
-      </button>
-      <ion-item-options slide="right">
-        <button ion-button color="primary" (click)="editItem(item)" icon-only>
-          <ion-icon name="cog"></ion-icon>
+    <div *ngFor="let item of matches | async">
+      <ion-item-sliding class="card" *ngIf="item.team1 == this.singleton.teamId ||item.team2 == this.singleton.teamId">
+        <button ion-item detail-push no-lines (click)="navigateToMatch(item)">
+          <p class="card__text">{{item.date}}</p>
+          <h2 class="card__title">
+            <span [ngClass]="{'primary-text': item.team1 == this.singleton.teamId}">{{item.team1_name}}</span>
+            vs
+            <span [ngClass]="{'primary-text': item.team2 == this.singleton.teamId}">{{item.team2_name}}</span>
+          </h2>
+          <p class="card__text">Round {{item.round}}</p>
         </button>
-        <button ion-button color="danger" (click)="removeItem(item.key)" icon-only>
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+        <ion-item-options slide="right">
+          <button ion-button color="primary" (click)="editItem(item)" icon-only>
+            <ion-icon name="cog"></ion-icon>
+          </button>
+          <button ion-button color="danger" (click)="removeItem(item.key)" icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
   </ion-list>
 
   <h3 class="tiny-title">Other Teams</h3>
+  <ion-list>
+    <div *ngFor="let item of matches | async">
+      <ion-item-sliding class="card"
+                        *ngIf="!(item.team1 == this.singleton.teamId ||item.team2 == this.singleton.teamId)">
+        <button ion-item detail-push no-lines (click)="navigateToMatch(item)">
+          <p class="card__text">{{item.date}}</p>
+          <h2 class="card__title">{{item.team1_name}} vs {{item.team2_name}}</h2>
+          <p class="card__text">Round {{item.round}}</p>
+        </button>
+        <ion-item-options slide="right">
+          <button ion-button color="primary" (click)="editItem(item)" icon-only>
+            <ion-icon name="cog"></ion-icon>
+          </button>
+          <button ion-button color="danger" (click)="removeItem(item.key)" icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+  </ion-list>
 
 </ion-content>

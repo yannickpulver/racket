@@ -6,6 +6,7 @@ import {MatchDetailPage} from "../match-detail/match-detail";
 import {App} from 'ionic-angular';
 import {Match, MatchIntern} from "../../models/Match";
 import {Team} from "../../models/Team";
+import {SingletonProvider} from "../../providers/singleton/singleton";
 
 
 
@@ -24,7 +25,8 @@ export class UpcomingMatchesPage {
   matches: Observable<MatchIntern[]>;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App, public singleton: SingletonProvider) {
     this.matches = this.firebaseService.getMatches();
   }
 

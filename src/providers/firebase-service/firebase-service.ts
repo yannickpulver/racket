@@ -96,9 +96,8 @@ export class FirebaseServiceProvider {
     return this.matchesRef.update(key, match);
   }
 
-  addTeam(team: Team) {
-    return this.teamsRef.push(team);
-  }
+
+
 
   getTeams() {
     return this.teams;
@@ -110,12 +109,12 @@ export class FirebaseServiceProvider {
         return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
       }).map(teams => {
         teams.forEach(team => {
-          team.winSet = 0;
-          team.lostSet = 0;
           return this.afd.list("matches").snapshotChanges()
             .map(changes => {
               return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
             }).subscribe(matches => {
+              team.winSet = 0;
+              team.lostSet = 0;
               matches.forEach(match => {
                 if (match.team1 == team.key || match.team2 == team.key) {
                   match.singleGames.forEach(singleGame => {
@@ -138,6 +137,7 @@ export class FirebaseServiceProvider {
               teams = teams.sort((a, b) => {
                 return a.winSet < b.winSet ? 1 : -1;
               });
+              console.log(teams);
               return matches;
             });
         });

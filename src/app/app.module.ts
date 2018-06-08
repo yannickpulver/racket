@@ -53,7 +53,7 @@ const firebaseConfig = {
     MatchDetailPage,
     MatchDetailScorePage,
     MatchDetailFormationPage,
-    FilterPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -135,6 +135,9 @@ export class FirebaseServiceProvider {
                 }
                 return match;
               });
+              teams = teams.sort((a, b) => {
+                return a.winSet < b.winSet ? 1 : -1;
+              });
               return matches;
             });
         });

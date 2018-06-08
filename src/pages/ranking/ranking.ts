@@ -23,8 +23,6 @@ export class RankingPage {
   teams: Observable<any>;
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
     this.teams = this.firebaseService.getTeamsWithScore();
-
-    this.teams.subscribe(value => console.log(value));
   }
 
   ionViewDidLoad() {

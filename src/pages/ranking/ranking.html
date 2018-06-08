@@ -17,21 +17,18 @@
 
   <ion-list>
     <ion-grid no-padding align-items-end class="scoreTitle" style="align-items: flex-end">
-      <ion-row style="width: 100px;">
-        <ion-col class="tiny-title points">
-          Points
-        </ion-col>
+      <ion-row style="width: 55px;">
         <ion-col class="tiny-title">
           Sets
         </ion-col>
       </ion-row>
     </ion-grid>
-      <ion-item no-padding detail-push no-lines *ngFor="let item of teams | async" class="card score" no-margin >
+      <ion-item no-padding detail-push no-lines *ngFor="let item of teams | async; let i = index" class="card score" no-margin >
         <ion-label no-margin>
           <ion-grid no-padding>
             <ion-row align-items-center>
               <ion-col class="card__number">
-                {{item.rank}}
+                {{i+1}}
               </ion-col>
               <ion-col class="card__name">
                 {{item.name}}

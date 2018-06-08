@@ -27,6 +27,7 @@ import {MatchDetailPage} from "../pages/match-detail/match-detail";
 import {MatchDetailScorePage} from "../pages/match-detail-score/match-detail-score";
 import {MatchDetailFormationPage} from "../pages/match-detail-formation/match-detail-formation";
 import {FilterPipe} from "../pipe/FilterPipe";
+import {SortRankingPipe} from "../pipe/SortRankingPipe";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4r535VHKNdUs6Kd-gdD4sWnJ8qskTq04",
@@ -54,6 +55,7 @@ const firebaseConfig = {
     MatchDetailScorePage,
     MatchDetailFormationPage,
     FilterPipe,
+    SortRankingPipe
   ],
   imports: [
     BrowserModule,

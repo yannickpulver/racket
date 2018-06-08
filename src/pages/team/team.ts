@@ -5,6 +5,7 @@ import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase
 import {SingletonProvider} from "../../providers/singleton/singleton";
 import {AddTeamMemberPage} from "../add-team-member/add-team-member";
 import {TeamMember} from "../../models/TeamMember";
+import {Team} from "../../models/Team";
 
 /**
  * Generated class for the TeamPage page.
@@ -20,11 +21,16 @@ import {TeamMember} from "../../models/TeamMember";
 })
 export class TeamPage {
 
-  teamName = "2. Liga Herren (Grp 59)";
+  teamName = "Baden";
   teamMembers: Observable<TeamMember>;
+  team: Observable<Team>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, public singleton: SingletonProvider) {
     this.teamMembers = this.firebaseService.getTeamMembers(this.singleton.teamId);
+    this.team = this.firebaseService.getTeamByKey(this.singleton.teamId);
+
+    this.team.forEach(value => this.teamName = value.name);
+
   }
 
   ionViewDidLoad() {

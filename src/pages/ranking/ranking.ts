@@ -23,52 +23,38 @@ export class RankingPage {
 
   number: number = 0;
 
-  matches: Observable<MatchIntern[]>;
-  teams: Observable<Team[]>;
+  matches: Observable<any[]>;
+  teams: Observable<MatchIntern[]>;
 
   ranking = [];
   test = [];
 
+  nameTeam: String;
+
+  singlegames = [];
+
   rankingSorted = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App, public loadingCtrl: LoadingController) {
-    this.matches = this.firebaseService.getMatches();
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
+    //this.matches = this.firebaseService.getMatchesWithScore();
+    this.teams = this.firebaseService.getMatchesWithScore();
 
-    this.teams = this.firebaseService.getTeams();
+    //console.log(this.matches);
+    console.log(this.teams);
 
-    this.teams.forEach(item => item.forEach( d => {
-      return this.ranking.push(new Object({
-        name: d.name,
-        score: this.getScore(d.name),
-        winSet: 4,
-        lostSet: 3,
-        rank: 3
-      }));
-    }));
+    this.teams.forEach(d => console.log(d));
 
+    //this.matches.forEach(d => console.log(d));
+    //this.getScore("Baden");
     //this.rankingSorted = this.ranking.sort(item => item.score);
     //this.rankingSorted = this.ranking.filter(a => a.score == 6);
 
     //console.log(this.rankingSorted)
     //this.teams.forEach( item => item.forEach(d => console.log(d.name)));
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RankingPage');
   }
 
-  getScore(team){
-    console.log(this.matches);
-
-   this.matches.subscribe(value => console.log(value));
-
-    if(team == "Zürich") return 6;
-    return 3;
-  }
-
-  countUp(){
-    this.number = this.number + 1;
-    return this.number;
-  }
 }

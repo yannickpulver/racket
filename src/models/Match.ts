@@ -1,5 +1,5 @@
-import {SingleGame} from "./SingleGame";
-import {DuoGame} from "./DuoGame";
+import {SingleGame, SingleGameInner} from "./SingleGame";
+import {DuoGame, DuoGameInner} from "./DuoGame";
 
 export interface Match {
   team1: string;
@@ -17,6 +17,7 @@ export interface MatchIntern {
   team2_name: string;
   round: number;
   date: Date;
-  singleGames: SingleGame[];
-  duoGames: DuoGame[];
+  singleGames: SingleGameInner[];
+  duoGames: DuoGameInner[];
+  key: string;
 }

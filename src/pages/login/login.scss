@@ -30,6 +30,14 @@ page-login {
   margin-top: 60%;
 }
 
+.login-container__input ion-select.select {
+  max-width: 89%;
+  width: 89%;
+  right: auto;
+  direction: ltr;
+  padding-left: 0;
+}
+
 .login-container__img {
   margin: 0 -25px 0 -100px;
 }
@@ -37,7 +45,7 @@ page-login {
 .login-container__input {
   background: $white;
   color: $primaryDark;
-  height: 48px;
+  //height: 48px;
   margin: $spacer 0 0 0;
   border-radius: 3px;
 }
@@ -55,10 +63,3 @@ page-login {
   font-weight: bold;
 }
 
-.item-select .select {
-  max-width: 89% !important;
-  width: 89% !important;
-  right: auto !important;
-  direction: ltr !important;
-  padding-left: 0 !important;
-}

@@ -26,9 +26,6 @@ export class UpcomingMatchesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
     this.matches = this.firebaseService.getMatches();
-
-    this.matches.subscribe(value => console.log(value));
-
   }
 
   ionViewDidLoad() {

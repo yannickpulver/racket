@@ -35,7 +35,7 @@
   background: $white;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
   border-radius: 2px;
-  padding: $spacer $spacer * 1.5;
+  //padding: $spacer $spacer * 1.5;
   & + .card {
     margin-top: 8px;
   }
@@ -71,6 +71,8 @@
   line-height: 50px;
 }
 
+
+
 .card__name{
   margin-left: 8px;
 }
@@ -101,4 +103,38 @@
 
 .no-margin .label-md{
   margin: 0;
+}
+
+
+.item-no-margin.login-container__input {
+  margin: 0;
+  padding: 0;
+  .card__number {
+    color: #fff;
+    margin: 0;
+  }
+  .card__number + .select, .card__number + ion-label {
+    padding-left: 16px !important;
+  }
+}
+
+.label-no-margin {
+  margin: 0;
+}
+
+.card__number.card__number--double {
+  height: 92px;
+  line-height: 92px;
+}
+
+.label-fullsized {
+  padding: 0;
+  margin: 0;
+  height: 50px;
+  line-height: 50px;
+  ion-select {
+    padding: 0;
+    background: #F7F7F7;
+    max-width: 100%;
+  }
 }

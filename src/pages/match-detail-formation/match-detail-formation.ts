@@ -26,18 +26,18 @@ export class MatchDetailFormationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public singleton: SingletonProvider, public firebaseService: FirebaseServiceProvider) {
     this.teamMembers = this.firebaseService.getTeamMembers(this.singleton.teamId);
-    this.teamMembers.subscribe(value => {
-      console.log(value);
-    });
     this.match = this.navParams.data;
-
-    console.log(this.match);
     this.isTeam1 = this.singleton.teamId == this.match.team1;
     this.filterargs = {teamId: this.singleton.teamId};
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MatchDetailFormationPage');
+  }
+
+  updateMatch() {
+    console.log(this.match);
+    this.firebaseService.updateMatch(this.match.key, this.match);
   }
 
 }

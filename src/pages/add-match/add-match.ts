@@ -53,11 +53,13 @@ export class AddMatchPage {
       var singleGame = <SingleGame>{};
       singleGame.index = i;
       singleGame.teamId = this.match.team1;
+      singleGame.score = 0;
       this.match.singleGames.push(singleGame)
 
       var singleGame2 = <SingleGame>{};
       singleGame2.index = i;
       singleGame2.teamId = this.match.team2;
+      singleGame2.score = 0;
       this.match.singleGames.push(singleGame2)
     }
 
@@ -67,15 +69,15 @@ export class AddMatchPage {
       var duoGame = <DuoGame>{};
       duoGame.index = i;
       duoGame.teamId = this.match.team1;
+      duoGame.score = 0;
       this.match.duoGames.push(duoGame)
 
       var duoGame2 = <DuoGame>{};
       duoGame2.index = i;
       duoGame2.teamId = this.match.team2;
+      duoGame2.score = 0;
       this.match.duoGames.push(duoGame2)
     }
-
-
 
     this.firebaseService.addMatch(this.match).then(() => {
       this.navCtrl. pop();

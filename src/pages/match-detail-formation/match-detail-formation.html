@@ -6,14 +6,14 @@
 -->
 <ion-content padding>
   <h3 class="tiny-title">Single Games</h3>
-  <div class="card" *ngFor="let item of match.singleGames | teamfilter:filterargs">
-    <ion-item class="login-container__input item-select">
-      <ion-label>
-        <ion-icon color="primary" name="contact"></ion-icon>
+  <div class="card" *ngFor="let item of match.singleGames | teamfilter:filterargs; let i = index">
+    <ion-item class="login-container__input item-select item-no-margin">
+      <ion-label class="card__number">
+        {{i+1}}
       </ion-label>
-      <ion-select class="select" placeholder="Player"
+      <ion-select class="select" placeholder="Select a player for this round" (ionChange)="updateMatch()"
                   [(ngModel)]="match.singleGames[match.singleGames.indexOf(item)].player" name="team-{{item.key}}">
-        <ion-option *ngFor="let teamMember of teamMembers | async" [value]="teamMember.key">{{teamMember.name}}
+        <ion-option *ngFor="let teamMember of teamMembers | async" [value]="teamMember.key">{{teamMember.name}} – ({{teamMember.classification}})
         </ion-option>
       </ion-select>
     </ion-item>
@@ -21,21 +21,23 @@
   <br>
   <br>
   <h3 class="tiny-title">Double Games</h3>
-  <div class="card" *ngFor="let item of match.duoGames | teamfilter:filterargs">
-    <ion-item class="login-container__input item-select">
-      <ion-label>
-        <ion-icon color="primary" name="contact"></ion-icon>
+  <div class="card" *ngFor="let item of match.duoGames | teamfilter:filterargs; let i = index">
+    <ion-item class="login-container__input item-select item-no-margin">
+      <ion-label class="card__number card__number--double">
+        {{i+1}}
       </ion-label>
-      <ion-select class="select" placeholder="Player"
-                  [(ngModel)]="match.duoGames[match.duoGames.indexOf(item)].player1" name="team-player1-{{item.key}}">
-        <ion-option *ngFor="let teamMember of teamMembers | async" [value]="teamMember.key">{{teamMember.name}}
-        </ion-option>
-      </ion-select>
-      <ion-select class="select" placeholder="Player"
-                  [(ngModel)]="match.duoGames[match.duoGames.indexOf(item)].player2" name="team-player2-{{item.key}}">
-        <ion-option *ngFor="let teamMember of teamMembers | async" [value]="teamMember.key">{{teamMember.name}}
-        </ion-option>
-      </ion-select>
+      <ion-label class="label-no-margin">
+        <ion-select class="select" placeholder="Select a player for this round" (ionChange)="updateMatch()"
+                    [(ngModel)]="match.duoGames[match.duoGames.indexOf(item)].player1" name="team-player1-{{item.key}}">
+          <ion-option *ngFor="let teamMember of teamMembers | async" [value]="teamMember.key">{{teamMember.name}} – ({{teamMember.classification}})
+          </ion-option>
+        </ion-select>
+        <ion-select class="select" placeholder="Select a player for this round" (ionChange)="updateMatch()"
+                    [(ngModel)]="match.duoGames[match.duoGames.indexOf(item)].player2" name="team-player2-{{item.key}}">
+          <ion-option *ngFor="let teamMember of teamMembers | async" [value]="teamMember.key">{{teamMember.name}} – ({{teamMember.classification}})
+          </ion-option>
+        </ion-select>
+      </ion-label>
     </ion-item>
   </div>
 

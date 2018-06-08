@@ -40,7 +40,7 @@ export class AddMatchPage {
     this.datePicker.show({
       date: new Date(),
       mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(
       date => this.match.date = date,
       err => console.log('Error occurred while getting date: ', err)
@@ -80,7 +80,7 @@ export class AddMatchPage {
     }
 
     this.firebaseService.addMatch(this.match).then(() => {
-      this.navCtrl. pop();
+      this.navCtrl.pop();
     });
   }
 }

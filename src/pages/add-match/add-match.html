@@ -41,7 +41,12 @@
       <ion-input placeholder="Roundnumber" [(ngModel)]="match.round" name="round"></ion-input>
     </ion-item>
 
-    <button ion-button type="button" (click)="showDatePicker()">Date</button>
+    <br>
+
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="match.date" name="date" min="2018" max="2022"></ion-datetime>
+    </ion-item>
 
     <ion-fab bottom right>
       <button ion-fab>

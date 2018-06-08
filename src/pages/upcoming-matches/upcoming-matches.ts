@@ -9,7 +9,6 @@ import {Team} from "../../models/Team";
 import {SingletonProvider} from "../../providers/singleton/singleton";
 
 
-
 /**
  * Generated class for the UpcomingMatchesPage page.
  *
@@ -23,13 +22,14 @@ import {SingletonProvider} from "../../providers/singleton/singleton";
 })
 export class UpcomingMatchesPage {
   matches: Observable<MatchIntern[]>;
-  now: Date;
-
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App, public singleton: SingletonProvider) {
     this.matches = this.firebaseService.getMatches();
-    this.now = new Date();
+  }
+
+
+  isInFuture(date) {
+    return new Date(date) > new Date();
   }
 
   ionViewDidLoad() {

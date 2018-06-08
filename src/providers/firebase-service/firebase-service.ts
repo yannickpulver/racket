@@ -64,7 +64,7 @@ export class FirebaseServiceProvider {
   }
 
   getMatches() {
-    return this.afd.list("matches").snapshotChanges()
+    return this.afd.list("matches", ref => ref.orderByChild("date")).snapshotChanges()
       .map(changes => {
         return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
       }).map(matches => {

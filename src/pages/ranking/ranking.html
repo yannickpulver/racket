@@ -14,22 +14,34 @@
 
 
 <ion-content padding>
+
   <ion-list>
-      <ion-item no-padding detail-push no-lines *ngFor="let item of matches | async" class="card score" no-margin >
+    <ion-grid no-padding align-items-end class="scoreTitle" style="align-items: flex-end">
+      <ion-row style="width: 100px;">
+        <ion-col class="tiny-title points">
+          Points
+        </ion-col>
+        <ion-col class="tiny-title">
+          Sets
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+      <ion-item no-padding detail-push no-lines *ngFor="let item of ranking" class="card score" no-margin >
         <ion-label no-margin>
           <ion-grid no-padding>
             <ion-row align-items-center>
               <ion-col class="card__number">
-                1
+                {{item.rank}}
               </ion-col>
               <ion-col class="card__name">
-                {{item.team1_name}}
+                {{item.name}}
               </ion-col>
               <ion-col class="points">
-                35
+                {{item.score}}
               </ion-col>
               <ion-col class="sets">
-                20:1
+                {{item.winSet}} : {{item.lostSet}}
+
               </ion-col>
             </ion-row>
           </ion-grid>

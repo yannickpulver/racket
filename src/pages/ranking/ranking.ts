@@ -4,6 +4,9 @@ import {FirebaseServiceProvider} from "../../providers/firebase-service/firebase
 import {App} from 'ionic-angular';
 import {Match, MatchIntern} from "../../models/Match";
 import {Observable} from "rxjs/Observable";
+import {Team} from "../../models/Team";
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+
 /**
  * Generated class for the RankingPage page.
  *
@@ -18,10 +21,36 @@ import {Observable} from "rxjs/Observable";
 })
 export class RankingPage {
 
-  matches: Observable<MatchIntern[]>;
+  number: number = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App) {
+  matches: Observable<MatchIntern[]>;
+  teams: Observable<Team[]>;
+
+  ranking = [];
+  test = [];
+
+  rankingSorted = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App, public loadingCtrl: LoadingController) {
     this.matches = this.firebaseService.getMatches();
+
+    this.teams = this.firebaseService.getTeams();
+
+    this.teams.forEach(item => item.forEach( d => {
+      return this.ranking.push(new Object({
+        name: d.name,
+        score: this.getScore(d.name),
+        winSet: 4,
+        lostSet: 3,
+        rank: 3
+      }));
+    }));
+
+    //this.rankingSorted = this.ranking.sort(item => item.score);
+    //this.rankingSorted = this.ranking.filter(a => a.score == 6);
+
+    //console.log(this.rankingSorted)
+    //this.teams.forEach( item => item.forEach(d => console.log(d.name)));
 
   }
 
@@ -29,4 +58,17 @@ export class RankingPage {
     console.log('ionViewDidLoad RankingPage');
   }
 
+  getScore(team){
+    console.log(this.matches);
+
+   this.matches.subscribe(value => console.log(value));
+
+    if(team == "Zürich") return 6;
+    return 3;
+  }
+
+  countUp(){
+    this.number = this.number + 1;
+    return this.number;
+  }
 }

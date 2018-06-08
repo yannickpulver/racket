@@ -110,4 +110,68 @@ export class FirebaseServiceProvider {
     });
     return this.teamById;
   }
+
+  getMatchesWithScore(){
+
+    return this.afd.list("teams").snapshotChanges().map(changes => {
+      return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+    }).map(teams => {
+      teams.forEach(team =>{
+        this.afd.object("matches").snapshotChanges()
+          .map(change => {
+            return {key: change.payload.key, ...change.payload.val()};
+          }).forEach(match =>{
+          }
+        );
+
+       /// team.score = 0;
+        return team;
+        });
+      return teams;
+    });
+
+    //this.teams.subscribe(value => value.score = 0);
+
+    /*this.afd.list("matches").snapshotChanges()
+      .map(changes => {
+        return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+      }).map(matches => {
+        matches.forEach(match => {
+
+          this.afd.object('/teams/' + match.team1).snapshotChanges()
+            .map(change => {
+              return {key: change.payload.key, ...change.payload.val()};
+            }).subscribe(value => {
+            match.team1_name = value.name;
+          });
+
+          var temp = 0;
+
+          match.singleGames.forEach(game =>{
+            if(game.score == 2){
+              temp = temp + 1;
+            }
+          });
+
+          match.duoGames.forEach(game =>{
+            if(game.score == 2){
+              temp = temp + 1;
+            }
+          });
+
+          match.score = temp;
+
+          this.afd.object('/teams/' + match.team2).snapshotChanges()
+            .map(change => {
+              return {key: change.payload.key, ...change.payload.val()};
+            }).subscribe(value => {
+            match.team2_name = value.name;
+          });
+          return match;
+        });
+        return matches;
+      });*/
+  }
+
+
 }

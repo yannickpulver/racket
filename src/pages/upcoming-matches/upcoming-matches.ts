@@ -23,11 +23,13 @@ import {SingletonProvider} from "../../providers/singleton/singleton";
 })
 export class UpcomingMatchesPage {
   matches: Observable<MatchIntern[]>;
+  now: Date;
 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseServiceProvider, private app: App, public singleton: SingletonProvider) {
     this.matches = this.firebaseService.getMatches();
+    this.now = new Date();
   }
 
   ionViewDidLoad() {
